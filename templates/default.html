@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>
+            {% if meta.title %}
+            {{ meta.title }}
+            {% else %}
+            microBlog
+            {% endif %}
+        </title>
+    </head>
+    <body>
+        <div>
+            {% for page in pages %}
+            {% if 'url' in page.meta %}
+            <a href={{page.meta['url'][0]}}>{{page.meta['title'][0]}}</a>
+            {% endif %}
+            {% endfor %}
+            {% autoescape false %}
+            {{content}}
+            {% endautoescape %}
+        </div>
+    </body>
+</html>
